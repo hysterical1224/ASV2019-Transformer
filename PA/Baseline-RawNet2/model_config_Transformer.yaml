@@ -1,0 +1,45 @@
+optimizer: Adam
+amsgrad: 1   #for adam optim
+
+
+
+#model-related
+model:
+  nb_samp: 64600
+  kernel_size: 1024   # no. of filter coefficients
+  in_channels: 1
+#  filts: [20, [20, 20], [20, 128], [128, 128]] # no. of filters channel in residual blocks
+#  blocks: [2, 4]
+#  nb_fc_node: 1024
+#  gru_node: 1024
+#  nb_gru_layer: 3
+  num_classes: 2
+
+
+  # network architecture
+  nfft: 40
+  device: cuda
+  type: transformer
+  expdir: save_models
+  d_model: 256
+  normalize_before: False
+  concat_after: False
+  # dropout
+  pos_dropout_rate: 0.0
+  ffn_dropout_rate: 0.0
+  slf_attn_dropout_rate: 0.0
+  src_attn_dropout_rate: 0.0
+  residual_dropout_rate: 0.1
+  # encoder related
+  feat_dim: 512
+  num_enc_blocks: 12
+  enc_ffn_units: 2048
+  enc_input_layer: conv2d
+
+
+  # attention related
+  n_heads: 4
+  # label smoothing
+  smoothing: 0.1
+  activation: glu
+  share_embedding: True
